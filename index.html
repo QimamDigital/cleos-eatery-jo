@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description"
+        content="Authentic Italian restaurant in Amman: wood-fired pizzas, handmade pasta, creamy risottos, and warm ambiance. Reserve a table or order online." />
+    <meta name="keywords"
+        content="Italian restaurant Amman, pizza Amman, pasta Jordan, Cleos Eatery, authentic Italian, dine in Amman" />
+    <title>Cleos Eatery™ | Authentic Italian in Amman</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --burgundy: #6B1A1A;
+            --burgundy-dark: #4A0E0E;
+            --burgundy-light: #8B2E2E;
+            --gold: #C49A2E;
+            --gold-light: #D4AF55;
+            --cream: #F9F3E8;
+            --cream-dark: #EDE4D0;
+            --olive: #4A5240;
+            --text-dark: #1C1409;
+            --text-mid: #4A3520;
+            --text-light: #8A7060;
+            --white: #FFFDF8;
+            --nav-h: 72px;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-h);
+            z-index: 100;
+            background: var(--burgundy-dark);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            border-bottom: 1px solid rgba(196, 154, 46, 0.3);
+            box-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        .logo-link img {
+            max-width: 160px;
+            height: auto;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        nav a {
+            color: var(--cream-dark);
+            text-decoration: none;
+            font-weight: 300;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.4rem 0.7rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--gold-light);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--cream);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: var(--nav-h);
+            left: 0;
+            right: 0;
+            background: var(--burgundy-dark);
+            z-index: 99;
+            flex-direction: column;
+            padding: 1rem 0;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            color: var(--cream-dark);
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .hero {
+            height: 100vh;
+            min-height: 580px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: var(--nav-h);
+            background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, rgba(74, 14, 14, 0.82), rgba(28, 20, 9, 0.75));
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            max-width: 780px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 300;
+            color: var(--white);
+        }
+
+        .hero h1 em {
+            color: var(--gold-light);
+            font-style: italic;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.85rem 2.4rem;
+            border: 1px solid var(--gold);
+            color: var(--gold-light);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .hero-cta:hover {
+            background: var(--gold);
+            color: var(--text-dark);
+        }
+
+        .section-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .menu-section {
+            padding: 5rem 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.35em;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            color: var(--burgundy-dark);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .menu-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img {
+            width: 100%;
+            aspect-ratio: 3/2;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 1.2rem;
+        }
+
+        .card-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--burgundy-dark);
+        }
+
+        .card-desc {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin: 0.5rem 0;
+            line-height: 1.4;
+        }
+
+        .card-price {
+            font-weight: 600;
+            color: var(--burgundy);
+            font-size: 1rem;
+        }
+
+        .price-dual {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .list-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .list-card {
+            background: var(--white);
+            padding: 1rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 6px;
+            border: 1px solid rgba(196, 154, 46, 0.2);
+        }
+
+        .reserve-section,
+        .about-section,
+        .reviews-section,
+        .info-section {
+            padding: 4rem 0;
+            background: var(--white);
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--burgundy);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--burgundy-light);
+        }
+
+        .map-container {
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+        }
+
+        .review-card {
+            background: var(--cream);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: var(--burgundy);
+        }
+
+        .flex-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 780px) {
+            .flex-2col {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            header {
+                padding: 0 1rem;
+            }
+        }
+
+        footer {
+            background: var(--burgundy-dark);
+            color: var(--cream-dark);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .back-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--burgundy);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .back-top.visible {
+            opacity: 1;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.7s;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="#top" class="logo-link">
+            <img src="https://image2url.com/r2/default/images/1775570773149-e15086ba-0b2a-44c1-83c1-2d7ff97f916d.png"
+                alt="Cleos Eatery Logo" />
+        </a>
+        <nav>
+            <a href="#appetizers">Antipasti</a>
+            <a href="#pizzas">Pizza</a>
+            <a href="#pasta">Pasta</a>
+            <a href="#risotto">Risotto</a>
+            <a href="#salads">Salads</a>
+            <a href="#desserts">Desserts</a>
+            <a href="#reserve">Reserve</a>
+            <a href="#about">About</a>
+        </nav>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </header>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#appetizers">Antipasti</a><a href="#pizzas">Pizza</a><a href="#pasta">Pasta</a><a
+            href="#risotto">Risotto</a><a href="#salads">Salads</a><a href="#desserts">Desserts</a><a
+            href="#reserve">Reserve</a><a href="#about">About</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Authentic <em>Italian</em><br>in the heart of Amman</h1>
+            <a href="#reserve" class="hero-cta">Reserve a Table</a>
+            <a href="https://talabat.com" target="_blank" class="hero-cta"
+                style="margin-left:1rem; background:rgba(0,0,0,0.3);">Order Online</a>
+        </div>
+    </section>
+
+    <!-- APPETIZERS -->
+    <section class="menu-section" id="appetizers">
+        <div class="section-wrap">
+            <div class="section-header"><span class="section-label">Antipasti</span>
+                <h2>Appetizers</h2>
+            </div>
+            <div class="card-grid">
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Crispy Bites</div>
+                        <div class="card-desc">Golden potato delights, crispy exterior, special flavors.</div>
+                        <div class="card-price">3.75 JD</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Truffle Temptation Fries</div>
+                        <div class="card-desc">Golden fries, truffle oil, parmesan.</div>
+                        <div class="card-price">3.25 JD</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Bocconcini Italiano</div>
+                        <div class="card-desc">Soft mozzarella balls, chef's homemade sauce.</div>
+                        <div class="card-price">4.75 JD</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Lasagna Cigar</div>
+                        <div class="card-desc">Fried lasagna rolled into cigar shape.</div>
+                        <div class="card-price">5.25 JD</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Arancini Bliss</div>
+                        <div class="card-desc">Crispy risotto arancini, special sauce.</div>
+                        <div class="card-price">5.25 JD</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIZZA -->
+    <section class="menu-section" id="pizzas">
+        <div class="section-wrap">
+            <div class="section-header"><span class="section-label">Wood-Fired</span>
+                <h2>Pizzas</h2>
+            </div>
+            <div class="card-grid">
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Bufala Napoletana</div>
+                        <div class="card-desc">Buffalo cheese, olive oil, basil.</div>
+                        <div class="price-dual"><span class="card-price">Reg 6.50 JD</span><span class="card-price">Lrg
+                                9.00 JD</span></div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Misto Milano</div>
+                        <div class="card-desc">Mozzarella, cheddar, beef bacon, peppers, onions.</div>
+                        <div class="price-dual"><span>6.50/8.50 JD</span></div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Pesto di Cleos</div>
+                        <div class="card-desc">Homemade pesto, mushrooms, cherry tomatoes.</div>
+                        <div class="price-dual"><span>6.50/8.50 JD</span></div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Truffltino</div>
+                        <div class="card-desc">Truffle cream, mozzarella, parmesan, mushrooms.</div>
+                        <div class="price-dual"><span>6.50/8.50 JD</span></div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Spinaci</div>
+                        <div class="card-desc">Spinach, pomegranate, feta cheese.</div>
+                        <div class="price-dual"><span>6.50/8.50 JD</span></div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Margherita Normale</div>
+                        <div class="card-desc">Classic tomato, mozzarella, basil.</div>
+                        <div class="price-dual"><span>5.00/7.00 JD</span></div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Quattro Formaggi</div>
+                        <div class="card-desc">Four cheeses: mozzarella, cheddar, parmesan, blue.</div>
+                        <div class="price-dual"><span>6.25/8.25 JD</span></div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Vegetariana</div>
+                        <div class="card-desc">Cherry tomatoes, mushrooms, peppers, olives.</div>
+                        <div class="price-dual"><span>6.00/8.00 JD</span></div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Pepperoni Speciale</div>
+                        <div class="card-desc">Special pepperoni, rocca.</div>
+                        <div class="price-dual"><span>6.25/8.75 JD</span></div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Pollo di Cleos</div>
+                        <div class="card-desc">Grilled chicken, vegetables, choice of sauce.</div>
+                        <div class="price-dual"><span>6.50/8.50 JD</span></div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Salmone di Mare</div>
+                        <div class="card-desc">Smoked salmon, capers, lemon, rocca.</div>
+                        <div class="price-dual"><span>7.50/9.75 JD</span></div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Gamberetto</div>
+                        <div class="card-desc">Shrimps scampi, creamy sauce, capers.</div>
+                        <div class="price-dual"><span>7.50/9.50 JD</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PASTA -->
+    <section class="menu-section" id="pasta">
+        <div class="section-wrap">
+            <div class="section-header">
+                <h2>Pasta</h2>
+            </div>
+            <div class="card-grid">
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Spinaci Ravioli</div>
+                        <div class="card-desc">Spinach ricotta pockets, parmesan.</div>
+                        <div class="card-price">8.75 JD</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Lasagna Napoli</div>
+                        <div class="card-desc">Cannelloni-style lasagna fusion.</div>
+                        <div class="card-price">8.50 JD</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Rigatoni Ricotta</div>
+                        <div class="card-desc">Tomato, lemon ricotta, basil.</div>
+                        <div class="card-price">7.25 JD</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Spaghetti Pomodoro</div>
+                        <div class="card-desc">Italian tomato sauce, parmesan, herbs.</div>
+                        <div class="card-price">6.25 JD</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Spaghetti Bolognese</div>
+                        <div class="card-desc">Rich meat sauce, parmesan.</div>
+                        <div class="card-price">7.25 JD</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Linguine Aglio e Olio</div>
+                        <div class="card-desc">Garlic, olive oil, chili, tomatoes.</div>
+                        <div class="card-price">5.75 JD</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Linguine Pesto</div>
+                        <div class="card-desc">Homemade pesto, pine nuts, sun-dried tomatoes.</div>
+                        <div class="card-price">6.25 JD</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Penne Arrabiata</div>
+                        <div class="card-desc">Spicy tomato sauce, garlic oil.</div>
+                        <div class="card-price">6.00 JD</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Penne Rose</div>
+                        <div class="card-desc">Tomato cream sauce, basil.</div>
+                        <div class="card-price">6.50 JD</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Fettuccine Alfredo</div>
+                        <div class="card-desc">Creamy sauce, mushrooms.</div>
+                        <div class="card-price">6.25 JD</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Spaghetti Gamberetto</div>
+                        <div class="card-desc">Shrimps, cherry tomatoes, tomato sauce.</div>
+                        <div class="card-price">9.00 JD</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RISOTTO -->
+    <section class="menu-section" id="risotto">
+        <div class="section-wrap">
+            <div class="section-header">
+                <h2>Risotto</h2>
+            </div>
+            <div class="card-grid">
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Gambaretto Risotto</div>
+                        <div class="card-desc">Shrimps, garlic, onions, parsley, parmesan.</div>
+                        <div class="card-price">9.50 JD</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Al Pomodoro</div>
+                        <div class="card-desc">Tomato sauce, herbs, parmesan.</div>
+                        <div class="card-price">6.25 JD</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Ai Funghi</div>
+                        <div class="card-desc">Porcini mushrooms, truffle oil, parmesan.</div>
+                        <div class="card-price">7.00 JD</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Al Pollo Rose</div>
+                        <div class="card-desc">Tomato cream sauce, grilled chicken.</div>
+                        <div class="card-price">7.00 JD</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SALADS -->
+    <section class="menu-section" id="salads">
+        <div class="section-wrap">
+            <div class="section-header">
+                <h2>Insalata</h2>
+            </div>
+            <div class="list-grid">
+                <div class="list-card"><span class="list-name">Bresaola Insalata (beef, figs, rocca)</span><span
+                        class="card-price">8.75 JD</span></div>
+                <div class="list-card"><span>Italiana</span><span>6.25 JD</span></div>
+                <div class="list-card"><span>Caprese</span><span>5.75 JD</span></div>
+                <div class="list-card"><span>Rucola</span><span>5.25 JD</span></div>
+                <div class="list-card"><span>Caesar</span><span>5.50 JD</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESSERTS -->
+    <section class="menu-section" id="desserts">
+        <div class="section-wrap">
+            <div class="section-header">
+                <h2>Dolci</h2>
+            </div>
+            <div style="max-width: 380px; margin:0 auto;">
+                <div class="menu-card"><img class="card-img"
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder">
+                    <div class="card-body">
+                        <div class="card-name">Tiramisu</div>
+                        <div class="card-desc">Espresso-soaked ladyfingers, mascarpone.</div>
+                        <div class="card-price">4.25 JD</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVE A TABLE SECTION -->
+    <section id="reserve" class="reserve-section">
+        <div class="section-wrap">
+            <div class="section-header">
+                <h2>Reserve a Table</h2>
+                <div class="section-label">Secure your Italian experience</div>
+            </div>
+            <div class="flex-2col">
+                <div>
+                    <form id="reservationForm" action="#" method="post">
+                        <div class="form-group"><input type="text" placeholder="Full Name" required></div>
+                        <div class="form-group"><input type="email" placeholder="Email" required></div>
+                        <div class="form-group"><input type="tel" placeholder="Phone Number" required></div>
+                        <div class="form-group"><input type="date" required></div>
+                        <div class="form-group"><input type="time" required></div>
+                        <div class="form-group"><select>
+                                <option>2 guests</option>
+                                <option>4 guests</option>
+                                <option>6 guests</option>
+                                <option>8+ guests</option>
+                            </select></div>
+                        <button type="submit" class="btn-primary">Book Now</button>
+                        <p style="font-size:0.7rem; margin-top:1rem;">We'll confirm within 2 hours</p>
+                    </form>
+                </div>
+                <div>
+                    <div class="map-container">
+                        <iframe
+                            src="https://maps.google.com/maps?q=Nahr%20Deyala%20St.,%20Amman&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                            allowfullscreen></iframe>
+                    </div>
+                    <p><strong>📍 Nahr Deyala St., Amman, Jordan</strong><br>📞 07 9183 0096<br>🕒 Open daily until
+                        11:30 PM</p>
+                    <a href="https://talabat.com" target="_blank" class="btn-primary"
+                        style="display:inline-block; margin-top:1rem;">Order Online via Talabat →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US -->
+    <section id="about" class="about-section">
+        <div class="section-wrap">
+            <div class="section-header">
+                <h2>Our Story</h2>
+            </div>
+            <div class="flex-2col">
+                <div>
+                    <p style="line-height:1.6;">Cleos Eatery™ was born from a passion for authentic Italian cuisine and
+                        a love for warm hospitality. Founded in Amman, we bring the soul of Naples and the romance of
+                        Tuscany to every dish. Our dough is hand-kneaded daily, our sauces simmer for hours, and our
+                        ingredients are sourced from local and Italian artisans. Whether it's a family dinner or a
+                        romantic evening, Cleos offers a cozy escape with wood-fired pizzas, silky pastas, and creamy
+                        risottos. <strong>Benvenuti a casa.</strong></p>
+                </div>
+                <div><img
+                        src="https://image2url.com/r2/default/images/1775573287731-0f671ea0-e43e-47c1-b338-48be14b3439a.png"
+                        alt="Placeholder" style="width:100%; border-radius:12px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS SECTION -->
+    <section class="reviews-section">
+        <div class="section-wrap">
+            <div class="section-header">
+                <h2>What Our Guests Say</h2>
+                <div class="section-label">4.8 ⭐ from 1,008+ reviews</div>
+            </div>
+            <div class="card-grid">
+                <div class="review-card">
+                    <div class="review-text">"One of the best pesto pastas I've ever had in Jordan. Beautiful decor,
+                        calm atmosphere, great service."</div>
+                    <div class="review-author">— Rahaf</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">"Cleos is a solid spot for Italian food. The pizza dough is light and
+                        flavorful, pasta fresh. Cozy and modern."</div>
+                    <div class="review-author">— Omar Al Hasasneh</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">"The four cheese pizza was decent and the pepperoni hit the spot. Great
+                        place to order from."</div>
+                    <div class="review-author">— Dylan</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">"If you want to eat the best pesto linguini, you must visit Cleos. Ask for
+                        balsamic vinegar and oil to dip the pizza crust!"</div>
+                    <div class="review-author">— Saba Raw</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">"Very delicious food. I loved the pesto linguine and the truffle pizza. Did
+                        not disappoint."</div>
+                    <div class="review-author">— Yasmeen Shanti</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">"The pizza is freshly baked, crispy with perfect texture. White sauce
+                        combination is amazing."</div>
+                    <div class="review-author">— PO NASH</div>
+                </div>
+            </div>
+            <div style="text-align:center; margin-top:2rem;"><a href="#" style="color:var(--burgundy);">Follow us on
+                    Instagram @cleoseatery →</a></div>
+        </div>
+    </section>
+
+    <!-- INFO BANNER -->
+    <section class="info-section" style="background:var(--cream-dark);">
+        <div class="section-wrap" style="text-align:center;">
+            <h3 style="font-family:'Cormorant Garamond';">Visit Us Today</h3>
+            <p>Nahr Deyala St., Amman | 07 9183 0096 | Open until 11:30 PM</p>
+            <div style="margin-top:1rem;">
+                <a href="#reserve" class="btn-primary" style="background:var(--gold); color:#1f1b14;">Reserve Now</a>
+                <a href="https://talabat.com" target="_blank" class="btn-primary"
+                    style="background:var(--burgundy);">Order Delivery</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <img src="https://image2url.com/r2/default/images/1775570773149-e15086ba-0b2a-44c1-83c1-2d7ff97f916d.png"
+            alt="Cleos" style="max-width:120px;">
+        <p>© 2025 Cleos Eatery™ · Authentic Italian in Amman</p>
+    </footer>
+
+    <button class="back-top" id="backTop"><svg width="20" viewBox="0 0 24 24" stroke="white" fill="none">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg></button>
+
+    <script>
+        const ham = document.getElementById('hamburger');
+        const mob = document.getElementById('mobileMenu');
+        ham.addEventListener('click', () => mob.classList.toggle('open'));
+        window.addEventListener('scroll', () => {
+            document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
+        });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        document.querySelectorAll('.menu-card, .review-card, .list-card').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
