@@ -61,8 +61,8 @@
         }
 
         .logo-link img {
-            max-width: 160px;
-            height: auto;
+            max-height: 50px;
+            width: auto;
             display: block;
         }
 
@@ -163,9 +163,16 @@
             font-style: italic;
         }
 
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
         .hero-cta {
             display: inline-block;
-            margin-top: 2rem;
             padding: 0.85rem 2.4rem;
             border: 1px solid var(--gold);
             color: var(--gold-light);
@@ -173,6 +180,7 @@
             letter-spacing: 0.2em;
             text-decoration: none;
             transition: 0.3s;
+            background: transparent;
         }
 
         .hero-cta:hover {
@@ -350,24 +358,6 @@
             gap: 2rem;
         }
 
-        @media (max-width: 780px) {
-            .flex-2col {
-                grid-template-columns: 1fr;
-            }
-
-            nav {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            header {
-                padding: 0 1rem;
-            }
-        }
-
         footer {
             background: var(--burgundy-dark);
             color: var(--cream-dark);
@@ -405,6 +395,71 @@
             opacity: 1;
             transform: none;
         }
+
+        /* Mobile fixes */
+        @media (max-width: 780px) {
+            .flex-2col {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            header {
+                padding: 0 1rem;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .card-body {
+                padding: 0.8rem;
+            }
+
+            .card-name {
+                font-size: 1rem;
+            }
+
+            .card-desc {
+                font-size: 0.7rem;
+            }
+
+            .info-section .btn-primary {
+                display: block;
+                width: 100%;
+                margin: 0.5rem 0;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-grid {
+                gap: 0.8rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+            .hero-cta {
+                width: 80%;
+                text-align: center;
+            }
+
+            .price-dual {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+        }
     </style>
 </head>
 
@@ -438,9 +493,10 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Authentic <em>Italian</em><br>in the heart of Amman</h1>
-            <a href="#reserve" class="hero-cta">Reserve a Table</a>
-            <a href="https://talabat.com" target="_blank" class="hero-cta"
-                style="margin-left:1rem; background:rgba(0,0,0,0.3);">Order Online</a>
+            <div class="hero-buttons">
+                <a href="#reserve" class="hero-cta">Reserve a Table</a>
+                <a href="https://talabat.com" target="_blank" class="hero-cta">Order Online</a>
+            </div>
         </div>
     </section>
 
@@ -915,8 +971,10 @@
                     <div class="review-author">— PO NASH</div>
                 </div>
             </div>
-            <div style="text-align:center; margin-top:2rem;"><a href="#" style="color:var(--burgundy);">Follow us on
-                    Instagram @cleoseatery →</a></div>
+            <div style="text-align:center; margin-top:2rem;">
+                <a href="https://www.instagram.com/cleoseatery?igsh=dXBiaGFqMWg1dHFm" target="_blank"
+                    style="color:var(--burgundy);">Follow us on Instagram @cleoseatery →</a>
+            </div>
         </div>
     </section>
 
@@ -925,7 +983,7 @@
         <div class="section-wrap" style="text-align:center;">
             <h3 style="font-family:'Cormorant Garamond';">Visit Us Today</h3>
             <p>Nahr Deyala St., Amman | 07 9183 0096 | Open until 11:30 PM</p>
-            <div style="margin-top:1rem;">
+            <div style="margin-top:1rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                 <a href="#reserve" class="btn-primary" style="background:var(--gold); color:#1f1b14;">Reserve Now</a>
                 <a href="https://talabat.com" target="_blank" class="btn-primary"
                     style="background:var(--burgundy);">Order Delivery</a>
